@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_22_134608) do
+ActiveRecord::Schema.define(version: 2018_05_23_214144) do
+
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.integer "parentid"
+    t.string "country"
+    t.integer "woeid"
+    t.string "countryCode"
+    t.integer "twitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.integer "twitter_id"
