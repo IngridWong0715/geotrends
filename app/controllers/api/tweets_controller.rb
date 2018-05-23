@@ -1,5 +1,5 @@
 require 'twitter'
-
+#TESTT
 class Api::TweetsController < ApplicationController
  @@client = Twitter::REST::Client.new do |config|
    config.consumer_key        = "A87Nzf0zVRiRv8CcNsMUJHhOP"
