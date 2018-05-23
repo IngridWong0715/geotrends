@@ -11,13 +11,8 @@ class Api::TweetsController < ApplicationController
 
     woeid = twitter_params[:woeid]
 
-    trending_topics = @@client.trends(id=woeid).take(10)  #TRENDS FOR PARIS RIGHT NOW
+    trending_topics = @@client.trends(id=woeid).take(10)
     render json: trending_topics
-  end
-
-  def available_places
-    available_locations = @@client.trends_available #Returns the locations that Twitter has trending topic information for
-    render json: available_locations
   end
 
 
