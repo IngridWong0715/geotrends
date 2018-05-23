@@ -1,4 +1,3 @@
-
 require 'twitter'
 
 class Api::TweetsController < ApplicationController
