@@ -8,22 +8,16 @@ class Api::TweetsController < ApplicationController
    config.access_token_secret = "lj3Q5yFHWXdLZiRhHeZtH7PdgPbnfxdHG84r38t1u6WWB"
  end
   def trending
-    trending_topics = @@client.trends(id=615702).take(10)  #TRENDS FOR PARIS RIGHT NOW
+    trending_topics = @@client.trends(id=2514815).take(10)  #TRENDS FOR PARIS RIGHT NOW
     render json: trending_topics
   end
 
-  def search
-  
-    results = @@client.search(q="#{twitter_params[:query]}}").take(10) #IDEALLY WANT TO RESTRICT TWEETS TO FRANCE?!
-    render json: results
 
-
-  end
 
   private
 
   def twitter_params
-    params.permit(:query)
+    params.permit(:woeid)
   end
 
 
