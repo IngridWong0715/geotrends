@@ -11,7 +11,7 @@ class Api::TweetsController < ApplicationController
 
   def trending_by_location
     woeid = twitter_params[:woeid]
-    trending_topics = @@client.trends(id=woeid).take(10)
+    trending_topics = @@client.trends(id=woeid)
     render json: trending_topics
   end
 
