@@ -10,7 +10,17 @@ class Api::TweetsController < ApplicationController
  end
 
   def trending_by_location
-    woeid = twitter_params[:woeid]
+    #query = woeid=...
+    #query = coords=...
+
+    if query[0] == 'w'
+      woeid = twitter_params[:query].split('woeid=')[1]
+    else
+      #query is a coords set
+      # need to find the corresponding woeid
+    end
+    binding.pry
+
     trending_topics = @@client.trends(id=woeid)
     render json: trending_topics
   end
@@ -19,6 +29,6 @@ class Api::TweetsController < ApplicationController
   private
 
   def twitter_params
-    params.permit(:woeid)
+    params.permit(:query)
   end
 end
