@@ -26,8 +26,11 @@ class Api::PlacesController < ApplicationController
 
        place = Place.where(woeid: location.woeid).first_or_create do |place|
          place.address = address
+         place.name = location.name
        end
-       geocoded_available_locations.push(place)
+       if place.latitude != nil && place.longitude != nil
+         geocoded_available_locations.push(place)
+       end
        # rake geocode:all CLASS=Place LIMIT=1000
      end
 

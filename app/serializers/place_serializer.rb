@@ -1,3 +1,3 @@
 class PlaceSerializer < ActiveModel::Serializer
-  attributes :woeid, :address, :longitude, :latitude
+  attributes :woeid, :address, :longitude, :latitude, :name
 end

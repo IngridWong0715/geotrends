@@ -1,7 +1,9 @@
 class Place < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
-  #the Google API has its usage limits, so we don’t want to query it if the address was unchanged or was not presented at all:
 
-
+#RUN THIS METHOD TO MAKE SURE THAT ALL ARE GEOCODED SO THEY SHOW UP IN MARKERS
+  def self.find_non_geocoded_locations
+    Place.where(longitude: nil)
+  end
 end
