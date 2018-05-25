@@ -11,8 +11,6 @@ class Api::PlacesController < ApplicationController
 
   def available_places #GIVES THIS TO INPUT FORM:
     available_locations = @@client.trends_available #Returns the locations that Twitter has trending topic information for
-    # GET GEOCODES HERE!!!
-    binding.pry
     render json: available_locations
   end
 
