@@ -9,21 +9,12 @@ class Api::TweetsController < ApplicationController
    config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
  end
 
-  def trending_by_location
-    #query = woeid=...
-    #query = coords=...
+ def trending_by_location
+   woeid = twitter_params[:query]
+   trending_topics = @@client.trends(id=woeid)
+   render json: trending_topics
+ end
 
-    if query[0] == 'w'
-      woeid = twitter_params[:query].split('woeid=')[1]
-    else
-      #query is a coords set
-      # need to find the corresponding woeid
-    end
-    binding.pry
-
-    trending_topics = @@client.trends(id=woeid)
-    render json: trending_topics
-  end
 
 
   private
