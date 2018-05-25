@@ -37,7 +37,9 @@ class Api::PlacesController < ApplicationController
     render json: geocoded_available_locations
   end
 
+  def get_woeid_from_coords
 
+  end
 
 
 
