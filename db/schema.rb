@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_214144) do
+ActiveRecord::Schema.define(version: 2018_05_25_014619) do
 
   create_table "places", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 2018_05_23_214144) do
     t.integer "twitter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "visited_by"
+    t.string "title"
   end
 
   create_table "tweets", force: :cascade do |t|
