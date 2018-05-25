@@ -9,29 +9,33 @@ class Api::PlacesController < ApplicationController
   end
 
 
-  def available_places #GIVES THIS TO INPUT FORM:
-    available_locations = @@client.trends_available #Returns the locations that Twitter has trending topic information for
-    render json: available_locations
+
+  def create_and_geocode_available_places #GIVES THIS TO INPUT FORM:
+ #1. Fetch all locations where Twitter has trends NOW
+    raw_available_locations = @@client.trends_available
+    raw_available_locations.shift #first one is worldwide
+
+    geocoded_available_locations = []
+
+    raw_available_locations.each do |location|
+       if location.place_type === "Country"
+         address = location.country
+       else
+         address = location.name + ", " + location.country
+       end
+
+       place = Place.where(woeid: location.woeid).first_or_create do |place|
+         place.address = address
+       end
+       geocoded_available_locations.push(place)
+       # rake geocode:all CLASS=Place LIMIT=1000
+     end
+
+    render json: geocoded_available_locations
   end
 
 
-  def index
-      @places = Place.order('created_at DESC')
-    end
 
-    def new
-      @place = Place.new
-    end
-
-    def create
-      @place = Place.new(place_params)
-      if @place.save
-        flash[:success] = "Place added!"
-        redirect_to root_path
-      else
-        render 'new'
-      end
-    end
 
 
 
