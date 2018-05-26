@@ -10,17 +10,16 @@ class Api::TweetsController < ApplicationController
  end
 
   def trending_by_location
-    #query = woeid=...
-    #query = coords=...
-
-binding.pry
-    if twitter_params[:query][0] == 'w'
+    query = twitter_params[:query]
+    if query[0] == 'w'
       woeid = twitter_params[:query].split('woeid=')[1]
     else
-      #query is a coords set
-      # need to find the corresponding woeid
+      coordinates = query.split('coords=')[1].split('&')
+      latitude = coordinates[0].to_f
+      longitude = coordinates[1].to_f
+      place = Place.find_by(latitude: latitude, longitude: longitude)
+      woeid = place.woeid
     end
-    binding.pry
 
     trending_topics = @@client.trends(id=woeid)
     render json: trending_topics
