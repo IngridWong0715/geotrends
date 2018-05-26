@@ -36,15 +36,19 @@ class Api::TweetsController < ApplicationController
         tweet[:user_screen_name] = t[:user][:screen_name],
         tweet[:hashtags] =t[:entities][:hashtags],
         tweet[:user_mentions]= t[:entities][:user_mentions],
-        tweet[:media] = t[:entities][:media]
+        tweet[:media] = t[:entities][:media],
+        tweet[:truncated] = t[:truncated],
+        tweet[:id] = t[:id]
       tweet
     end
+
     # GET:
     # user name, user screename
     # post date
     #hashtags
     # text
     #image
+
     render json: tweets
   end
 
