@@ -25,10 +25,19 @@ class Api::TweetsController < ApplicationController
     render json: trending_topics
   end
 
+  def tweets_by_tweet_query
+
+    q = twitter_params[:tweet_query]
+    tweets = @@client.search(q=q).attrs[:statuses]
+
+
+    binding.pry
+  end
+
 
   private
 
   def twitter_params
-    params.permit(:query)
+    params.permit(:query, :tweet_query)
   end
 end
