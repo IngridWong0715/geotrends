@@ -28,7 +28,8 @@ class Api::TweetsController < ApplicationController
   def tweets_by_tweet_query
     q = twitter_params[:tweet_query]
     tweets = @@client.search(q=q).attrs[:statuses]
-    tweets = tweets.map do |t|
+
+    list = tweets.map do |t|
       tweet = {}
       tweet[:created] = t[:created_at],
         tweet[:text] = t[:text],
@@ -42,6 +43,7 @@ class Api::TweetsController < ApplicationController
       tweet
     end
 
+
     # GET:
     # user name, user screename
     # post date
@@ -49,7 +51,7 @@ class Api::TweetsController < ApplicationController
     # text
     #image
 
-    render json: tweets
+    render json: list
   end
 
 
