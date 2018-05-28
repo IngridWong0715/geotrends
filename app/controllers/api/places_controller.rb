@@ -1,6 +1,7 @@
 require 'twitter'
 
 class Api::PlacesController < ApplicationController
+
   @@client = Twitter::REST::Client.new do |config|
     config.consumer_key        = ENV["CONSUMER_KEY"]
     config.consumer_secret     = ENV["CONSUMER_SECRET"]
@@ -8,10 +9,9 @@ class Api::PlacesController < ApplicationController
     config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
   end
 
-
-
   def create_and_geocode_available_places #GIVES THIS TO INPUT FORM:
  #1. Fetch all locations where Twitter has trends NOW
+
     raw_available_locations = @@client.trends_available
     raw_available_locations.shift #first one is worldwide
 
@@ -37,17 +37,7 @@ class Api::PlacesController < ApplicationController
     render json: geocoded_available_locations
   end
 
-  def get_woeid_from_coords
-
-  end
-
-
-
-
-
-
   private
-
 
   def place_params
    params.permit(:title, :address, :visited_by, :woeid)

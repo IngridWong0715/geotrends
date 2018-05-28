@@ -24,35 +24,36 @@ class Api::TweetsController < ApplicationController
     trending_topics = @@client.trends(id=woeid)
     render json: trending_topics
   end
-
+  
   def tweets_by_tweet_query
-    q = twitter_params[:tweet_query]
-    tweets = @@client.search(q=q).attrs[:statuses]
+     q = twitter_params[:tweet_query]
+     tweets = @@client.search(q=q).attrs[:statuses]
 
-    list = tweets.map do |t|
-      tweet = {}
-      tweet[:created] = t[:created_at],
-        tweet[:text] = t[:text],
-        tweet[:user_name]= t[:user][:name],
-        tweet[:user_screen_name] = t[:user][:screen_name],
-        tweet[:hashtags] =t[:entities][:hashtags],
-        tweet[:user_mentions]= t[:entities][:user_mentions],
-        tweet[:media] = t[:entities][:media],
-        tweet[:truncated] = t[:truncated],
-        tweet[:id] = t[:id]
-      tweet
-    end
+     list = tweets.map do |t|
+       tweet = {}
+       tweet[:created] = t[:created_at],
+         tweet[:text] = t[:text],
+         tweet[:user_name]= t[:user][:name],
+         tweet[:user_screen_name] = t[:user][:screen_name],
+         tweet[:hashtags] =t[:entities][:hashtags],
+         tweet[:user_mentions]= t[:entities][:user_mentions],
+         tweet[:media] = t[:entities][:media],
+         tweet[:truncated] = t[:truncated],
+         tweet[:id] = t[:id]
+       tweet
+     end
 
 
-    # GET:
-    # user name, user screename
-    # post date
-    #hashtags
-    # text
-    #image
+     # GET:
+     # user name, user screename
+     # post date
+     #hashtags
+     # text
+     #image
 
-    render json: list
-  end
+     render json: list
+   end
+
 
 
   private
