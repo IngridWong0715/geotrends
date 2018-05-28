@@ -24,7 +24,7 @@ class Api::TweetsController < ApplicationController
     trending_topics = @@client.trends(id=woeid)
     render json: trending_topics
   end
-  
+
   def tweets_by_tweet_query
      q = twitter_params[:tweet_query]
      tweets = @@client.search(q=q).attrs[:statuses]
@@ -42,14 +42,6 @@ class Api::TweetsController < ApplicationController
          tweet[:id] = t[:id]
        tweet
      end
-
-
-     # GET:
-     # user name, user screename
-     # post date
-     #hashtags
-     # text
-     #image
 
      render json: list
    end
