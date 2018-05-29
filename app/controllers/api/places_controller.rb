@@ -9,10 +9,6 @@ class Api::PlacesController < ApplicationController
     config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
   end
 
-  def is_following_user
-    is_following = @@client.friendship?(@@client, params[:user_screen_name])
-    render json: is_following
-  end
 
   def follow
     followed = @@client.follow(params[:user_screen_name])

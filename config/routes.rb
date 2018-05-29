@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get '/trending/location/:tweet_query', to: 'tweets#tweets_by_tweet_query'
     get '/trending/:query', to: 'tweets#trending_by_location', constraints: { query: /.*/ }
     get '/follow/:user_screen_name', to: 'places#follow'
-    get '/is_following/:user_screen_name', to: 'places#is_following_user'
+    
     resources :places, except: [:update, :edit, :destroy]
     post '/retweet/:tweet_id', to: 'tweets#retweet'
 
