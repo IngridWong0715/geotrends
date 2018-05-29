@@ -47,11 +47,15 @@ class Api::TweetsController < ApplicationController
      render json: list
    end
 
+   def retweet
+     tweet = @@client.retweet(params[:tweet_id], {trim_user: true})
+     render json: tweet
+   end
 
 
   private
 
   def twitter_params
-    params.permit(:query, :tweet_query)
+    params.permit(:query, :tweet_query, :tweet_id)
   end
 end
