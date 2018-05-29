@@ -1,15 +1,11 @@
 class SessionsController < ApplicationController
   def create
-    raise :test
-    @user = User.find_or_create_by(uid: auth['uid'])
-    session[:user] = @user
-    redirect_to '/'
+  user = User.from_omniauth(request.env['omniauth.auth'])
+  session[:user_id] = user.id
+
+  render json: user
   end
 
-  private
 
-  def auth
-    request.env['omniauth.auth']
-  end
 
 end
