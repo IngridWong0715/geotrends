@@ -2,13 +2,6 @@ require 'twitter'
 
 class Api::TweetsController < ApplicationController
 
- @@client = Twitter::REST::Client.new do |config|
-   config.consumer_key        = ENV["CONSUMER_KEY"]
-   config.consumer_secret     = ENV["CONSUMER_SECRET"]
-   config.access_token        = ENV["ACCESS_TOKEN"]
-   config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
- end
-
   def trending_by_location
     query = twitter_params[:query]
     if query[0] == 'w'
@@ -21,13 +14,13 @@ class Api::TweetsController < ApplicationController
       woeid = place.woeid
     end
 
-    trending_topics = @@client.trends(id=woeid)
+    trending_topics = client.trends(id=woeid)
     render json: trending_topics
   end
 
   def tweets_by_tweet_query
      q = twitter_params[:tweet_query]
-     tweets = @@client.search(q=q).attrs[:statuses]
+     tweets = client.search(q=q).attrs[:statuses]
 
      list = tweets.map do |t|
        tweet = {}
@@ -48,7 +41,7 @@ class Api::TweetsController < ApplicationController
    end
 
    def retweet
-     tweet = @@client.retweet(params[:tweet_id], {trim_user: true})
+     tweet = client.retweet(params[:tweet_id], {trim_user: true})
      render json: tweet
    end
 
