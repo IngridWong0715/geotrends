@@ -31,10 +31,11 @@ class Api::TweetsController < ApplicationController
 
      list = tweets.map do |t|
        tweet = {}
-       tweet[:created] = t[:created_at],
+       tweet[:created] = t[:created_at].to_datetime.strftime("%m-%e-%y %H:%M"),
          tweet[:text] = t[:text],
          tweet[:user_name]= t[:user][:name],
          tweet[:user_screen_name] = t[:user][:screen_name],
+         tweet[:user_profile_image_url] = t[:user][:profile_image_url],
          tweet[:hashtags] =t[:entities][:hashtags],
          tweet[:user_mentions]= t[:entities][:user_mentions],
          tweet[:media] = t[:entities][:media],
