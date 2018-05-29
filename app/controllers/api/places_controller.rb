@@ -9,6 +9,15 @@ class Api::PlacesController < ApplicationController
     config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
   end
 
+  def is_following_user
+    is_following = @@client.friendship?(@@client, params[:user_screen_name])
+    render json: is_following
+  end
+
+  def follow
+    followed = @@client.follow(params[:user_screen_name])
+    render json: followed
+  end
   def create_and_geocode_available_places #GIVES THIS TO INPUT FORM:
  #1. Fetch all locations where Twitter has trends NOW
 
@@ -40,6 +49,6 @@ class Api::PlacesController < ApplicationController
   private
 
   def place_params
-   params.permit(:title, :address, :visited_by, :woeid)
+   params.permit(:title, :address, :visited_by, :woeid, :user_screen_name)
  end
 end
