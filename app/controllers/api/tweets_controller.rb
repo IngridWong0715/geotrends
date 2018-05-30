@@ -41,7 +41,7 @@ class Api::TweetsController < ApplicationController
    end
 
    def retweet
-     tweet = client.retweet(params[:tweet_id], {trim_user: true})
+     tweet = client.retweet(params[:tweet_id])
      render json: tweet
    end
 

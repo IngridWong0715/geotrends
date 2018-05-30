@@ -21,6 +21,7 @@ gem 'puma', '~> 3.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'faraday'
 
 gem 'pry'
 gem 'twitter'

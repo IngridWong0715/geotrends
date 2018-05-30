@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/follow/:user_screen_name', to: 'places#follow'
 
     resources :places, except: [:update, :edit, :destroy]
-    post '/retweet/:tweet_id', to: 'tweets#retweet'
+    get '/retweet/:tweet_id', to: 'tweets#retweet'
 
   end
 
