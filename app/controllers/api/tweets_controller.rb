@@ -45,6 +45,11 @@ class Api::TweetsController < ApplicationController
      render json: tweet
    end
 
+   def favorite
+     tweet = client.favorite(params[:tweet_id])
+     render json: tweet
+   end
+
 
   private
 

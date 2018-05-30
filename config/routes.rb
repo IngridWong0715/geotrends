@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     resources :places, except: [:update, :edit, :destroy]
     get '/retweet/:tweet_id', to: 'tweets#retweet'
+      get '/favorite/:tweet_id', to: 'tweets#favorite'
 
   end
 
