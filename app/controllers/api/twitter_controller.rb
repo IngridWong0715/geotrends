@@ -83,6 +83,19 @@ class Api::TwitterController < ApplicationController
      end
 
     private
+     def client
+       token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiSW5ncmlkV29uZzA3MTUiLCJpZCI6MSwidWlkIjoyOTk4NTczOTkwfX0.PY482fJU3lf1WX1R8rdE7pg6iuILLrFSywgzSdulP3s"
+       if Auth.decode_token(token)
+         @client ||= Twitter::REST::Client.new do |config|
+           config.consumer_key        = ENV["CONSUMER_KEY"]
+           config.consumer_secret     = ENV["CONSUMER_SECRET"]
+           config.access_token        = ENV["MY_ACCESS_TOKEN"]
+           config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
+         end
+       else
+         @client = { error: { message: 'You must have a valid token!'}}
+       end
+     end
 
     def place_params
      params.permit(:title, :address, :visited_by, :woeid, :user_screen_name)
