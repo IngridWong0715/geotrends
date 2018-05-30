@@ -1,5 +1,7 @@
 class User < ApplicationRecord
+  has_secure_password
   has_many :tweets
+
 
   def self.from_omniauth(auth)
     where(uid: auth['uid']).first_or_create do |u|
