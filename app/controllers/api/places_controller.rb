@@ -35,6 +35,9 @@ class Api::PlacesController < ApplicationController
     render json: geocoded_available_locations
   end
 
+  
+
+
   private
 
   def place_params
