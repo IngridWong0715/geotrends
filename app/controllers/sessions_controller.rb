@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :set_client
-
   def create
     user = User.from_omniauth(auth)
     session[:user_id] = user.id
@@ -8,6 +6,11 @@ class SessionsController < ApplicationController
     session[:user_secret] = auth['credentials']['secret']
     render json: user
   end
+
+  def signin_status
+    render json: session[:user_id]
+  end
+
 
   def destroy
     reset_session
