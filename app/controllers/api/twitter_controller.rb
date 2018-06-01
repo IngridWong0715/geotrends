@@ -1,13 +1,13 @@
 class Api::TwitterController < ApplicationController
+  before_action :set_client
 
     def follow
-      followed = client.follow(params[:user_screen_name])
+      followed = @client.follow(params[:user_screen_name])
       render json: followed
     end
     def create_and_geocode_available_places #GIVES THIS TO INPUT FORM:
    #1. Fetch all locations where Twitter has trends NOW
-
-      raw_available_locations = client.trends_available
+      raw_available_locations = @client.trends_available
       raw_available_locations.shift #first one is worldwide
 
       geocoded_available_locations = []
@@ -46,13 +46,13 @@ class Api::TwitterController < ApplicationController
         woeid = place.woeid
       end
 
-      trending_topics = client.trends(id=woeid)
+      trending_topics = @client.trends(id=woeid)
       render json: trending_topics
     end
 
     def tweets_by_tweet_query
        q = twitter_params[:tweet_query]
-       tweets = client.search(q=q).attrs[:statuses]
+       tweets = @client.search(q=q).attrs[:statuses]
 
        list = tweets.map do |t|
          tweet = {}
@@ -73,27 +73,22 @@ class Api::TwitterController < ApplicationController
      end
 
      def retweet
-       tweet = client.retweet(params[:tweet_id])
+       tweet = @client.retweet(params[:tweet_id])
        render json: tweet
      end
 
      def favorite
-       tweet = client.favorite(params[:tweet_id])
+       tweet = @client.favorite(params[:tweet_id])
        render json: tweet
      end
 
     private
-     def client
-       token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiSW5ncmlkV29uZzA3MTUiLCJpZCI6MSwidWlkIjoyOTk4NTczOTkwfX0.PY482fJU3lf1WX1R8rdE7pg6iuILLrFSywgzSdulP3s"
-       if Auth.decode_token(token)
-         @client ||= Twitter::REST::Client.new do |config|
-           config.consumer_key        = ENV["CONSUMER_KEY"]
-           config.consumer_secret     = ENV["CONSUMER_SECRET"]
-           config.access_token        = ENV["MY_ACCESS_TOKEN"]
-           config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
-         end
-       else
-         @client = { error: { message: 'You must have a valid token!'}}
+     def set_client
+       @client = Twitter::REST::Client.new do |config|
+         config.consumer_key        = ENV["CONSUMER_KEY"]
+         config.consumer_secret     = ENV["CONSUMER_SECRET"]
+         config.access_token        = ENV["MY_ACCESS_TOKEN"]
+         config.access_token_secret = ENV["MY_ACCESS_TOKEN_SECRET"]
        end
      end
 
