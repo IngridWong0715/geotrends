@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-   get '/auth/:provider/callback' => 'sessions#create'
-   get "/signout", to: "sessions#destroy" # THIS SHOULD BE DELETE
-   get '/signin_status', to: 'sessions#signin_status'
-   post '/login', to: 'sessions#login'
+   get '/auth/:provider/callback', to: 'sessions#create'
+
   namespace :api do
     get '/trending/available_places', to: 'twitter#create_and_geocode_available_places'
     get '/trending/location/:tweet_query', to: 'twitter#tweets_by_tweet_query'
