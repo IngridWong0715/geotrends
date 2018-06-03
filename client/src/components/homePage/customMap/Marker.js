@@ -3,12 +3,13 @@ import {Marker} from 'react-google-maps'
 import PropTypes from 'prop-types'
 
 const MyMarker = ({place, onMarkerClick}) => {
-  const {lat, lng, name} = place
+  const {lat, lng, name, woeid} = place
   const data = {
     type: 'coords',
     lat: lat,
     lng: lng,
-    name: name
+    name: name,
+    woeid: woeid
   }
   return (
     <Marker

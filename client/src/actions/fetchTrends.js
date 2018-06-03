@@ -9,7 +9,6 @@ export function fetchTrends(data){
         name: data.name
       })
     } else {
-      debugger;
       dispatch({
         type: 'SET_PLACE_QUERY_COORDS',
         lat: data.lat,

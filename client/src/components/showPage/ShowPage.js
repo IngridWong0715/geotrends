@@ -6,6 +6,7 @@ import TweetsList from './tweetsIndex/TweetsList'
 import NavBar from './appBar/NavBar'
 import { fetchTweets } from '../../actions/fetchTweets'
 import { resetQuery } from '../../actions/resetQuery'
+import { fetchTrends } from '../../actions/fetchTrends';
 import HashtagsList from './hashtagsIndex/HashtagsList'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -37,6 +38,33 @@ class ShowPage extends React.Component {
     this.props.fetchTweets(searchQuery)
   }
 
+  componentWillMount(){
+    // 1. Check if it's direct access through /trends/:woeid, or through map
+    // if this.props.placeQuery.woeid == ownProps.match.params.woeid
+      //from maps query:
+        // don't do anything, just render Trends
+    // else
+      // find place
+      // const place = this.props.places.find(place => place.woeid === ownProps.match.params.woeid)
+      // let data
+      // if (place){
+      //    data = {
+      //     type: 'woeid',
+      //     woeid: place.woeid,
+      //     name: place.name
+      //   }
+      // } else {
+      //   data = {type: 'error'};
+      // }
+      //trigger fetch trends
+      // if (data.type === 'woeid'){
+      //   fetchTrends(data)
+      // } else {
+      //    alert('THE PLACE DOES NOT HAVE A TREND');
+      // }
+
+  }
+
 
   render(){
     return (
@@ -61,8 +89,14 @@ class ShowPage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    places: state.places,
     trends: state.placeQuery.trends,
     placeQuery: state.placeQuery.query,
+    //     query: {
+    //       woeid: 0,
+    //       coords: {},
+    //       name: ''
+    //     }
     tweets: state.trendQuery.tweets,
     isFetchingTweets: state.trendQuery.isFetching
   }
@@ -71,7 +105,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     fetchTweets: fetchTweets,
-    resetQuery: resetQuery
+    resetQuery: resetQuery,
+    fetchTrends: fetchTrends,
   }, dispatch)
 }
 

@@ -47,7 +47,7 @@ render(){
           )
         )}/>
 
-        <Route exact path="/trends" render={() => (
+        <Route path={`/trends/:woeid`} render={() => (
           loggedIn ? (
             <ShowPage />
           ) : (
