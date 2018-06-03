@@ -35,7 +35,6 @@ class App extends React.Component {
   }
 
 render(){
-
   return (
     <Router>
       <div className="App">
@@ -47,14 +46,7 @@ render(){
           )
         )}/>
 
-        <Route path={`/trends/:woeid`} render={() => (
-          loggedIn ? (
-            <ShowPage />
-          ) : (
-            <Redirect to='/signin'/>
-          )
-        )}/>
-
+        <Route path='/trends/:woeid' component={ShowPage}/>
         <Route exact path="/home" component={Home}/>
         <Route exact path="/signin" component={SignIn}/>
 

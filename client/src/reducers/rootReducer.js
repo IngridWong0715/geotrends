@@ -60,6 +60,7 @@ function placeQuery(state = initialPlaceQueryState, action){
         query: {
           ...state.query,
             coords: coords,
+            woeid: action.woeid,
             name: action.name,
         }
       }

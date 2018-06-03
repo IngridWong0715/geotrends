@@ -11,7 +11,7 @@ const Home = ({fetchTrends, history, places}) => {
   const onSearchBarSubmit = (data) => {
     if (data.type === 'woeid'){
       fetchTrends(data)
-      debugger;
+
       history.push(`/trends/${data.woeid}`)
     } else {
        alert('THE PLACE DOES NOT HAVE A TREND');
@@ -19,7 +19,7 @@ const Home = ({fetchTrends, history, places}) => {
   }
 
   const onMarkerClick = (data) => {
-    debugger;
+    
     fetchTrends(data)
     history.push(`/trends/${data.woeid}`)
   }

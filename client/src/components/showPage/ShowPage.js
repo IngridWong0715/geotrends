@@ -38,9 +38,34 @@ class ShowPage extends React.Component {
     this.props.fetchTweets(searchQuery)
   }
 
-  componentWillMount(){
+  componentDidMount(){
+    debugger;
+
+    if (this.props.placeQuery.woeid != this.props.woeid){
+
+      const place = this.props.places.find(place => place.woeid === this.props.woeid)
+      let data
+      if (place){
+         data = {
+          type: 'woeid',
+          woeid: place.woeid,
+          name: place.name
+        }
+      } else {
+        data = {type: 'error'};
+      }
+      debugger;
+      if (data.type === 'woeid'){
+        debugger;
+        fetchTrends(data)
+      } else {
+        debugger;
+         alert('THE PLACE DOES NOT HAVE A TREND');
+      }
+    }
+
     // 1. Check if it's direct access through /trends/:woeid, or through map
-    // if this.props.placeQuery.woeid == ownProps.match.params.woeid
+    // if this.props.placeQuery.woeid != this.props.woeid
       //from maps query:
         // don't do anything, just render Trends
     // else
@@ -67,6 +92,7 @@ class ShowPage extends React.Component {
 
 
   render(){
+    debugger;
     return (
       <div>
         <NavBar resetQuery={this.props.resetQuery}/>
@@ -87,7 +113,8 @@ class ShowPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
   return {
     places: state.places,
     trends: state.placeQuery.trends,
@@ -98,7 +125,8 @@ const mapStateToProps = (state) => {
     //       name: ''
     //     }
     tweets: state.trendQuery.tweets,
-    isFetchingTweets: state.trendQuery.isFetching
+    isFetchingTweets: state.trendQuery.isFetching,
+    woeid: ownProps.match.params.woeid
   }
 }
 

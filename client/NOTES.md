@@ -2,10 +2,42 @@ NEED TO ADD:
 npm i @material-ui/core
 npm i @material-ui/icons
 
-Next steps:
+------
 
-- display activities/search results on each specific trend when clicked
+LOGIN IMPLEMENTATION:
+for App.js:
 
+render(){
+  return (
+    <Router>
+      <div className="App">
+        <Route exact path="/" render={() => (
+          loggedIn ? (
+            <Redirect to='/home'/>
+          ) : (
+            <SignIn/>
+          )
+        )}/>
+
+        <Route path='/trends/:woeid' render={() => (
+          loggedIn ? (
+            <ShowPage />
+          ) : (
+            <Redirect to='/signin'/>
+          )
+        )}/>
+
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/signin" component={SignIn}/>
+
+      </div>
+    </Router>
+    );
+  };
+}
+
+
+---------
 
 ISSUES
 1. In fetchTrending, line 8: dispatch not fired?!

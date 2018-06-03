@@ -13,6 +13,7 @@ export function fetchTrends(data){
         type: 'SET_PLACE_QUERY_COORDS',
         lat: data.lat,
         lng: data.lng,
+        woeid: data.woeid,
         name: data.name
       })
     }
