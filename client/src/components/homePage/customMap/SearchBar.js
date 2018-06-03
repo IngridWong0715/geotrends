@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
   }
 
   render(){
-    const {places,handleOnSubmit} = this.props
+    const {places, handleOnSubmit} = this.props
     const list = places.map( place => {
           return <option value={place.name} ></option>
         });
@@ -24,7 +24,6 @@ class SearchBar extends React.Component {
     let data
     if (place){
        data = {
-        type: 'woeid',
         woeid: place.woeid,
         name: place.name
       }

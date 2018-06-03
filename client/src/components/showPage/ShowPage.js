@@ -11,8 +11,6 @@ import HashtagsList from './hashtagsIndex/HashtagsList'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -43,6 +41,7 @@ class ShowPage extends React.Component {
   componentDidMount(){
 
 // NEED TO WAIT TILL APP.JS FETCHES AND UPDATES PLACES IN STATE
+//HOW?!
     if (this.props.placeQuery.woeid !== this.props.woeid){
 
       const place = this.props.places.find(place => place.woeid === this.props.woeid)

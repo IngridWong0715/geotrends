@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import MyMarkerCluster from './MarkerCluster'
 import SearchBar from './SearchBar'
 
-const Map = ({zoom, center, places, handleSearchSubmit, handleMarkerClick}) => {
+const Map = ({zoom, center, places, handleSearch}) => {
   return (
     <GoogleMap
       defaultZoom={zoom}
       defaultCenter={center}>
-      <SearchBar places={places} handleOnSubmit={handleSearchSubmit}/>
-      <MyMarkerCluster places={places} onMarkerClick={handleMarkerClick}/>
+      <SearchBar places={places} handleOnSubmit={handleSearch}/>
+      <MyMarkerCluster places={places} handleOnClick={handleSearch}/>
     </GoogleMap>
   );
 }

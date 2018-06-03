@@ -43,25 +43,12 @@ function places(state = [], action){
 }
 function placeQuery(state = initialPlaceQueryState, action){
   switch(action.type){
-    case 'SET_PLACE_QUERY_WOEID':
+    case 'SET_PLACE_QUERY':
       return {
         ...state,
         query: {
-          ...state.query,
           woeid: action.woeid,
           name: action.name,
-        }
-      }
-
-    case 'SET_PLACE_QUERY_COORDS':
-      const coords = {lat: action.lat, lng: action.lng}
-      return {
-        ...state,
-        query: {
-          ...state.query,
-            coords: coords,
-            woeid: action.woeid,
-            name: action.name,
         }
       }
 
@@ -116,7 +103,6 @@ const rootReducer = (state, action) => {
         trends: [],
         query: {
           woeid: 0,
-          coords: {},
           name: ''
         }
       },

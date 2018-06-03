@@ -8,29 +8,19 @@ import { withRouter } from "react-router";
 
 const Home = ({fetchTrends, history, places}) => {
 
-  const onSearchBarSubmit = (data) => {
-    if (data.type === 'woeid'){
-      fetchTrends(data)
-
-      history.push(`/trends/${data.woeid}`)
-    } else {
-       alert('THE PLACE DOES NOT HAVE A TREND');
-    }
-  }
-
-  const onMarkerClick = (data) => {
-    debugger;
+  const handleSearch = (data) => {
     fetchTrends(data)
     history.push(`/trends/${data.woeid}`)
   }
+
+
 
   return (
     <div>
       <Map
         places={places}
         center={{lat: 30, lng: 0}}
-        handleSearchSubmit={onSearchBarSubmit}
-        handleMarkerClick={onMarkerClick}
+        handleSearch={handleSearch}
         zoom={2}
         googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPbvv_lp-_uMsao9jg40Yw6L9W8pouyvY&v=3.exp&libraries=geometry,drawing,places"
         loadingElement={<div style={{ height: `100%` }} />}

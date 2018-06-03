@@ -3,7 +3,7 @@ import MarkerClusterer from "react-google-maps/lib/components/addons/MarkerClust
 import MyMarker from './Marker'
 import PropTypes from 'prop-types';
 
-const MyMarkerCluster = ({places, onMarkerClick}) => {
+const MyMarkerCluster = ({places, handleOnClick}) => {
   return (
     <MarkerClusterer
      averageCenter
@@ -11,7 +11,7 @@ const MyMarkerCluster = ({places, onMarkerClick}) => {
      gridSize={60}
      >
        {places.map(place => (
-        <MyMarker place={place} onMarkerClick={onMarkerClick}/>
+        <MyMarker place={place} handleOnClick={handleOnClick}/>
         ))}
     </MarkerClusterer>
   );
