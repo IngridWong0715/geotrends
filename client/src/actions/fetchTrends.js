@@ -9,10 +9,12 @@ export function fetchTrends(data){
         name: data.name
       })
     } else {
+      debugger;
       dispatch({
         type: 'SET_PLACE_QUERY_COORDS',
         lat: data.lat,
-        lng: data.lng
+        lng: data.lng,
+        name: data.name
       })
     }
     //the returned value of that returned funcition is a resolved promise
@@ -42,8 +44,8 @@ export function fetchTrends(data){
         ({status, json}) => {
           if (status >= 400) {
             //Bad status
-            dispatch({type: 'FETCH_RESOURCES_FAIL', errorType: 'warning', message:'Error after fetching resources'}),
-            dispatch({type: 'CREATE_API_ENTITY_ERROR', errorType: 'warning', message: 'Entity error whilst creating'})
+            dispatch({type: 'FETCH_RESOURCES_FAIL', errorType: 'warning', message:'Error after fetching resources'});
+            dispatch({type: 'CREATE_API_ENTITY_ERROR', errorType: 'warning', message: 'Entity error whilst creating'});
           } else {
             // Status looks good
             dispatch({
@@ -55,8 +57,8 @@ export function fetchTrends(data){
         }, //??? SYNTAX???
         // Either fetching or parsing failed!
         err => {
-          dispatch({type: 'PRE_FETCH_RESOURCES_FAIL', errorType: 'fatal', message:'Error fetching resources'}),
-          dispatch({type: 'PRE_CREATE_API_ENTITY_ERROR', errorType: 'fatal', message: 'Entity error before creating'})
+          dispatch({type: 'PRE_FETCH_RESOURCES_FAIL', errorType: 'fatal', message:'Error fetching resources'});
+          dispatch({type: 'PRE_CREATE_API_ENTITY_ERROR', errorType: 'fatal', message: 'Entity error before creating'});
         }
       ); // then
 

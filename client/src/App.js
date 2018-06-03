@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Redirect
 } from 'react-router-dom';
 import './App.css';
@@ -24,9 +23,9 @@ class App extends React.Component {
       .then( json => {
         let places = json.map( location => {
           let place = {};
+          place.name = location.address;
           place.lat = location.latitude;
           place.lng = location.longitude;
-          place.name = location.name
           place.woeid = location.woeid
           return place;
         });

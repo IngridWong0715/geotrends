@@ -1,19 +1,11 @@
-//This replaces HashtagsListBackUp and HashtagBackup
-//BUT STYLING OF PAPER DOESN"T WORK!!!
-
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import Menu from '@material-ui/core/MenuList';
 import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 
 const styles = theme => ({
   root: {

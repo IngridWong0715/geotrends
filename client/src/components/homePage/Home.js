@@ -18,6 +18,7 @@ const Home = ({fetchTrends, history, places}) => {
   }
 
   const onMarkerClick = (data) => {
+    debugger;
     fetchTrends(data)
     history.push('/trends')
   }
@@ -49,6 +50,10 @@ const mapStateToProps = state => {
   return {
     places: state.places
   }
+}
+
+Home.propTypes = {
+  places: PropTypes.array.isRequired
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

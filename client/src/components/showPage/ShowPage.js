@@ -8,7 +8,6 @@ import { fetchTweets } from '../../actions/fetchTweets'
 import { resetQuery } from '../../actions/resetQuery'
 import HashtagsList from './hashtagsIndex/HashtagsList'
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({

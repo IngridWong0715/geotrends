@@ -44,7 +44,6 @@ function places(state = [], action){
 function placeQuery(state = initialPlaceQueryState, action){
   switch(action.type){
     case 'SET_PLACE_QUERY_WOEID':
-    //NOT SETTING?!??!
       return {
         ...state,
         query: {
@@ -55,13 +54,13 @@ function placeQuery(state = initialPlaceQueryState, action){
       }
 
     case 'SET_PLACE_QUERY_COORDS':
-    //NOT SETTING?!??!
       const coords = {lat: action.lat, lng: action.lng}
       return {
         ...state,
         query: {
           ...state.query,
-            coords: coords
+            coords: coords,
+            name: action.name,
         }
       }
 

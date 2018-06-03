@@ -6,7 +6,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -35,8 +34,8 @@ const styles = theme => ({
 
 class Tweet extends React.Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       followingUser: false,
       liked: false,
@@ -73,7 +72,7 @@ class Tweet extends React.Component {
 
   }
   render() {
-    const {  id, user_name, user_screen_name, user_mentions, truncated, user_profile_image_url} = this.props.tweet
+    const { user_name, user_screen_name, truncated, user_profile_image_url} = this.props.tweet
     const created = this.props.tweet.created[0]
 
     const text = truncated ? `${this.props.tweet.text} I AM TRUNCATED, view rest on twitter` : `${this.props.tweet.text}`
@@ -129,6 +128,10 @@ class Tweet extends React.Component {
       </div>
     );
   }
+}
+
+Tweet.propTypes = {
+  tweet: PropTypes.object.isRequired
 }
 
 export default withStyles(styles)(Tweet);

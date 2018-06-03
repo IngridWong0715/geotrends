@@ -23,7 +23,7 @@ class Api::TwitterController < ApplicationController
            place.address = address
            place.name = location.name
          end
-         if place.latitude != nil && place.longitude != nil
+         if place.latitude != nil && place.longitude != nil && place.woeid != nil 
            geocoded_available_locations.push(place)
          end
          # rake geocode:all CLASS=Place LIMIT=1000
