@@ -9,6 +9,7 @@ export function fetchTrends(data){
         name: data.name
       })
     } else {
+      debugger;
       dispatch({
         type: 'SET_PLACE_QUERY_COORDS',
         lat: data.lat,
@@ -26,12 +27,7 @@ export function fetchTrends(data){
       query = `coords=${data.lat}&${data.lng}`
     }
 
-    return fetch(`/api/trending/${query}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiSW5ncmlkV29uZzA3MTUiLCJpZCI6MSwidWlkIjoyOTk4NTczOTkwfX0.DRlQQY89jMbcoFNctev5LnuRirXe5uwlSIxmSUkg_6Y'
-      }
-    })
+    return fetch(`/api/trending/${data.woeid}`)
       // Try to parse the response
       .then( res => res.json()
       .then( json => ({

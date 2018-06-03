@@ -23,7 +23,7 @@ class Api::TwitterController < ApplicationController
            place.address = address
            place.name = location.name
          end
-         if place.latitude != nil && place.longitude != nil && place.woeid != nil 
+         if place.latitude != nil && place.longitude != nil && place.woeid != nil
            geocoded_available_locations.push(place)
          end
          # rake geocode:all CLASS=Place LIMIT=1000
@@ -32,21 +32,10 @@ class Api::TwitterController < ApplicationController
       render json: geocoded_available_locations
     end
 
-    ### TWEETS CONTROLLER
-
     def trending_by_location
-      query = twitter_params[:query]
-      if query[0] == 'w'
-        woeid = twitter_params[:query].split('woeid=')[1]
-      else
-        coordinates = query.split('coords=')[1].split('&')
-        latitude = coordinates[0].to_f
-        longitude = coordinates[1].to_f
-        place = Place.find_by(latitude: latitude, longitude: longitude)
-        woeid = place.woeid
-      end
+      place = Place.find_by(woeid: twitter_params[:query])
+      trending_topics = @client.trends(id=place.woeid)
 
-      trending_topics = @client.trends(id=woeid)
       render json: trending_topics
     end
 

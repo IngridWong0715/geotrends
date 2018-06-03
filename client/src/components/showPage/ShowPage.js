@@ -11,6 +11,8 @@ import HashtagsList from './hashtagsIndex/HashtagsList'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -39,9 +41,9 @@ class ShowPage extends React.Component {
   }
 
   componentDidMount(){
-    debugger;
 
-    if (this.props.placeQuery.woeid != this.props.woeid){
+// NEED TO WAIT TILL APP.JS FETCHES AND UPDATES PLACES IN STATE
+    if (this.props.placeQuery.woeid !== this.props.woeid){
 
       const place = this.props.places.find(place => place.woeid === this.props.woeid)
       let data
@@ -64,29 +66,7 @@ class ShowPage extends React.Component {
       }
     }
 
-    // 1. Check if it's direct access through /trends/:woeid, or through map
-    // if this.props.placeQuery.woeid != this.props.woeid
-      //from maps query:
-        // don't do anything, just render Trends
-    // else
-      // find place
-      // const place = this.props.places.find(place => place.woeid === ownProps.match.params.woeid)
-      // let data
-      // if (place){
-      //    data = {
-      //     type: 'woeid',
-      //     woeid: place.woeid,
-      //     name: place.name
-      //   }
-      // } else {
-      //   data = {type: 'error'};
-      // }
-      //trigger fetch trends
-      // if (data.type === 'woeid'){
-      //   fetchTrends(data)
-      // } else {
-      //    alert('THE PLACE DOES NOT HAVE A TREND');
-      // }
+
 
   }
 

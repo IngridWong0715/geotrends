@@ -19,7 +19,7 @@ const Home = ({fetchTrends, history, places}) => {
   }
 
   const onMarkerClick = (data) => {
-    
+    debugger;
     fetchTrends(data)
     history.push(`/trends/${data.woeid}`)
   }
