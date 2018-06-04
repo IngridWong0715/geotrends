@@ -31,18 +31,18 @@ const styles = theme => ({
       marginLeft: 100,
       marginTop: 20,
   },
-  hashtag: {
+  trend: {
     textAlign: 'center',
   },
 
 });
 
-const HashtagsList = ({handleHashtagClick, hashtags, classes, placeQuery}) => {
+const TrendsList = ({handleTrendClick, trends, classes, placeQuery}) => {
   const handleMenuItemClick = (event) => {
-    handleHashtagClick(event.target.textContent)
+    handleTrendClick(event.target.textContent)
   };
 
-  let list = hashtags.map( hashtag => {
+  let list = trends.map( trend => {
     return (
       <MenuItem
         classes={{
@@ -51,7 +51,7 @@ const HashtagsList = ({handleHashtagClick, hashtags, classes, placeQuery}) => {
         }}
         onClick={ event => handleMenuItemClick(event)}>
         <ListItem  >
-          <ListItemText primary={hashtag.name} className={classes.hashtag}/>
+          <ListItemText primary={trend.name} className={classes.trend}/>
         </ListItem>
       </MenuItem>
     )
@@ -67,13 +67,13 @@ const HashtagsList = ({handleHashtagClick, hashtags, classes, placeQuery}) => {
   );
 }
 
-HashtagsList.defualtProps = {
-  hashtags: []
+TrendsList.defualtProps = {
+  trends: []
 }
-HashtagsList.propTypes = {
-  hashtags: PropTypes.array.isRequired,
+TrendsList.propTypes = {
+  trends: PropTypes.array.isRequired,
   classes: PropTypes.object.isRequired,
-  handleHashtagClick: PropTypes.func.isRequired,
+  handletrendClick: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(HashtagsList);
+export default withStyles(styles)(TrendsList);
