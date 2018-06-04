@@ -1,4 +1,4 @@
-# Viewing Global Trends  with Twitter
+# Viewing Global Trends  with Twitter App
 
 For my final project, I decided to work on an app that pulls instant data on trends fromTwitter and displays them based on user selection.
 
