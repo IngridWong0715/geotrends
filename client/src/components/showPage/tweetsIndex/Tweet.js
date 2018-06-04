@@ -44,7 +44,7 @@ class Tweet extends React.Component {
   }
 
   handleFollowButton(userScreenName){
-   fetch(`/api/follow/${userScreenName}`)
+   fetch(`/api/follow/${userScreenName}`, {method: 'POST'})
     .then( res => res.json())
     .then( following => {
       if (following[0].id){
@@ -55,7 +55,7 @@ class Tweet extends React.Component {
   }
 
   handleRetweet(){
-    fetch(`/api/retweet/${this.props.tweet.id}`)
+    fetch(`/api/retweet/${this.props.tweet.id}`, {method: 'POST'})
     .then(res => res.json())
     .then(retweetStatus => {
         this.setState({retweeted: true})
@@ -63,7 +63,7 @@ class Tweet extends React.Component {
     })
   }
   handleFavorite(){
-    fetch(`/api/favorite/${this.props.tweet.id}`)
+    fetch(`/api/favorite/${this.props.tweet.id}`, {method: 'POST'})
     .then(res => res.json())
     .then(favoriteStatus => {
         this.setState({liked: true})

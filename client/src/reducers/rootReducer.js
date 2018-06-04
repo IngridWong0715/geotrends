@@ -4,15 +4,13 @@ import { combineReducers } from 'redux'
 //   places = [],
 //   placeQuery: {
 //     trends: [],
-
 //     query: {
 //       woeid: 0,
-//       coords: {},
 //       name: ''
 //     }
 //   },
 //   trendQuery: {
- //isFetching: false,
+//  isFetching: false,
 //     query: '',
 //     tweets: []
 //   }
@@ -22,7 +20,6 @@ const initialPlaceQueryState = {
   trends: [], //instead of trendingTopics
   query: {
     woeid: 0,
-    coords: {},
     name: ''
   }
 }
