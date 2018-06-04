@@ -19,7 +19,12 @@ class App extends React.Component {
 
   componentDidMount() {
     fetch('/api/trending/available_places')
-      .then(res => res.json())
+      .then(res => {
+        if (res.ok){
+          return res.json()
+        }
+        throw new Error('Network response was not ok.')
+      })
       .then( json => {
         let places = json.map( location => {
           let place = {};

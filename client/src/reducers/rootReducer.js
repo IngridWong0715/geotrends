@@ -41,6 +41,8 @@ function places(state = [], action){
       return state
   }
 }
+
+//Reducer for dealing with query on a PLACE: i.e., in HOMEPAGE: when user search for trends specific to a place
 function placeQuery(state = initialPlaceQueryState, action){
   switch(action.type){
     case 'SET_PLACE_QUERY':
@@ -65,6 +67,7 @@ function placeQuery(state = initialPlaceQueryState, action){
   }
 }
 
+// Reducer dealing with query on a TREND: in SHOWPAGE: when user clicks on a specific trend
 function trendQuery(state = intialTrendQueryState, action){
   switch(action.type){
     case 'SET_TREND_QUERY':

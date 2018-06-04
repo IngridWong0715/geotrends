@@ -39,31 +39,35 @@ class ShowPage extends React.Component {
   }
 
   componentDidMount(){
+    console.log("PLACES ARE ", this.props.places)
+    debugger;
 
 // NEED TO WAIT TILL APP.JS FETCHES AND UPDATES PLACES IN STATE
 //HOW?!
-    if (this.props.placeQuery.woeid !== this.props.woeid){
 
-      const place = this.props.places.find(place => place.woeid === this.props.woeid)
-      let data
-      if (place){
-         data = {
-          type: 'woeid',
-          woeid: place.woeid,
-          name: place.name
-        }
-      } else {
-        data = {type: 'error'};
-      }
-      debugger;
-      if (data.type === 'woeid'){
-        debugger;
-        fetchTrends(data)
-      } else {
-        debugger;
-         alert('THE PLACE DOES NOT HAVE A TREND');
-      }
-    }
+    // if (this.props.isDirectlyAccessing)){
+    //
+    // PROBLEM: this.props.places is EMPTY (view above)
+    //   const place = this.props.places.find(place => place.woeid === this.props.woeid)
+    //   let data
+    //   if (place){
+    //      data = {
+    //       type: 'woeid',
+    //       woeid: place.woeid,
+    //       name: place.name
+    //     }
+    //   } else {
+    //     data = {type: 'error'};
+    //   }
+    //   debugger;
+    //   if (data.type === 'woeid'){
+    //     debugger;
+    //     fetchTrends(data)
+    //   } else {
+    //     debugger;
+    //      alert('THE PLACE DOES NOT HAVE A TREND');
+    //   }
+    // }
 
 
 
@@ -94,18 +98,21 @@ class ShowPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
 
+  const isDirectlyAccessing = state.placeQuery.query.woeid != ownProps.match.params.woeid
+  debugger;
+
+  // WHY IS STATE.PLACES EMPTY WHEN DIRECTLY ACCESSING THIS ROUTE?
   return {
     places: state.places,
     trends: state.placeQuery.trends,
     placeQuery: state.placeQuery.query,
-    //     query: {
-    //       woeid: 0,
-    //       coords: {},
-    //       name: ''
-    //     }
+
     tweets: state.trendQuery.tweets,
     isFetchingTweets: state.trendQuery.isFetching,
-    woeid: ownProps.match.params.woeid
+
+// FOR IMPLEMENTING WHEN A USER DIRECTLY ACCESS /trends/:woeid
+    isDirectlyAccessing: isDirectlyAccessing
+
   }
 }
 

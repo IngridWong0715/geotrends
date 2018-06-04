@@ -8,7 +8,6 @@ export function fetchTrends(data){
       name: data.name
     });
 
-
     //the returned value of that returned funcition is a resolved promise
     // which sends a patch request
     let query;
