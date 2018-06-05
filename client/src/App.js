@@ -11,6 +11,7 @@ import './App.css';
 import Home from './components/homePage/Home';
 import ShowPage from './components/showPage/ShowPage'
 import SignIn from './components/signInPage/SignIn'
+import Welcome from './components/signInPage/Welcome'
 import { setPlaces } from './actions/setPlaces'
 
 const loggedIn = true //TO DO: JWT authentication flow
@@ -43,17 +44,11 @@ render(){
   return (
     <Router>
       <div className="App">
-        <Route exact path="/" render={() => (
-          loggedIn ? (
-            <Redirect to='/home'/>
-          ) : (
-            <SignIn/>
-          )
-        )}/>
-
+        <Route exact path="/" component={Welcome}/>
         <Route path='/trends/:woeid' component={ShowPage}/>
         <Route exact path="/home" component={Home}/>
         <Route exact path="/signin" component={SignIn}/>
+
 
       </div>
     </Router>
