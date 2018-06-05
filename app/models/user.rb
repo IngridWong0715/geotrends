@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
 
   def self.from_omniauth(auth)
+    binding.pry
     where(uid: auth['uid']).first_or_create do |u|
       u.uid = auth['uid']
       u.name = auth['info']['name']
