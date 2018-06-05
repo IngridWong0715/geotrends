@@ -61,3 +61,13 @@ The API server has six endpoints, all of which interact with the Twitter API thr
   `post 'api/follow/:user_screen_name'`: makes a request to Twitter API to follow the user
   `post 'api/retweet/:tweet_id'`: makes a request to Twitter API to retweet the tweet
   `post  'api/favorite/:tweet_id'`: makes a request to Twitter API to like the tweet
+
+** Deployment Notes **
+
+In console:
+```
+git push heroku master
+ heroku run rake start:production
+heroku run bundle exec rails -p 3001
+```
+(consider installing foreman)

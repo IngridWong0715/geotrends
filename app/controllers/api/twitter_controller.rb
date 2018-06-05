@@ -28,7 +28,6 @@ class Api::TwitterController < ApplicationController
          end
          # rake geocode:all CLASS=Place LIMIT=1000
        end
-
       render json: geocoded_available_locations
     end
 
