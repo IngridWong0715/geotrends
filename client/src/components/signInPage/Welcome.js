@@ -15,10 +15,10 @@ class Welcome extends React.Component {
   render(){
     return (
       <div style={{display: 'flex', height: '100vh', width:'100vw', background: `url(${Background})`, backgroundSize: 'cover'}}>
-        <Grid container item xs={10} sm={10} md={5} lg={5} xl={5} spacing={6} justify="center" style={{ margin: 'auto', height: '200', width:'100'} } >
-          <Paper elevation={20} style={{background: '#0D1420', border:'white' }}>
-            <Typography variant="subheading" style={{color: 'white', fontFamily: 'Sans Serif'}}>
-                Welcome to Global Trends Watcher!
+        <Grid container item xs={10} sm={10} md={7} lg={5} xl={5} spacing={6} justify="center" style={{ margin: '40px auto'} } >
+          <Paper elevation={20} style={{background: 'transparent', border:'white' }}>
+            <Typography variant="display2" style={{color: 'white', fontFamily: 'Sans Serif'}}>
+                Welcome to Global Trends Watcher
             </Typography>
             <Typography variant="body2" style={{color: 'white', fontFamily: 'Sans Serif'}}>
               On the next page, you will see a Google Maps display. Each marker on the map represents a location where
@@ -29,8 +29,8 @@ class Welcome extends React.Component {
               explore what people are saying about that trend. You can also follow a specific user, retweet and like a tweet.
             </Typography>
             <Typography variant="body2" >
-              <Button style={{color:'white', fontFamily: 'Sans Serif'}} onClick={this.showHomePage.bind(this)}>
-                Click HERE to explore
+              <Button  size="large" style={{fontSize: '25px', color:'#FFD700', fontFamily: 'Sans Serif'}} onClick={this.showHomePage.bind(this)}>
+                Click Here to Explore
               </Button>
             </Typography>
           </Paper>
