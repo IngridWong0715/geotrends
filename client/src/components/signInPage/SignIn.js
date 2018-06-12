@@ -1,6 +1,5 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
-import Background from '../../nasa.jpg'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -24,7 +23,7 @@ class SignIn extends React.Component {
 
   render(){
     return (
-      <div style={{display: 'flex', height: '100vh', width:'100vw', background: `url(${Background})`, backgroundSize: 'cover'}}>
+      <div style={{display: 'flex', height: '100vh', width:'100vw', background: '#657ced', backgroundSize: 'cover'}}>
 
           <Grid container item spacing={0} justify="center" style={{ margin: 'auto'} } >
             <Paper style={{background: 'transparent'}}>

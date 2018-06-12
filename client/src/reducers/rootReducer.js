@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-// initialCompleteState = {
+// state = {
 //   places = [],
 //   placeQuery: {
 //     trends: [],
@@ -17,7 +17,7 @@ import { combineReducers } from 'redux'
 // }
 
 const initialPlaceQueryState = {
-  trends: [], //instead of trendingTopics
+  trends: [],
   query: {
     woeid: 0,
     name: ''
@@ -29,6 +29,8 @@ const intialTrendQueryState = {
   tweets: [],
   isisFetching: false, // false when fetch request is not initiatedd/ has ended
 }
+
+
 
 function places(state = [], action){
   switch(action.type){

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper'
 import Tweet from './Tweet'
-import ProgressBar from './ProgressBar'
+import ProgressBar from '../../utilities/ProgressBar'
 
 const TweetsList = ({isFetching, tweets, handleFollowButton}) => {
   let cards

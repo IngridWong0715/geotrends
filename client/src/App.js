@@ -9,7 +9,6 @@ import {
 import './App.css';
 
 import Home from './components/homePage/Home';
-import customModal from './components/homePage/customModal';
 import ShowPage from './components/showPage/ShowPage'
 import SignIn from './components/signInPage/SignIn'
 import Welcome from './components/signInPage/Welcome'
@@ -47,10 +46,8 @@ render(){
       <div className="App">
         <Route exact path="/" component={Welcome}/>
         <Route path='/trends/:woeid' component={ShowPage}/>
-        <Route exact path="/home" component={customModal}/>
+        <Route exact path="/home" component={Home}/>
         <Route exact path="/signin" component={SignIn}/>
-
-
       </div>
     </Router>
     );
