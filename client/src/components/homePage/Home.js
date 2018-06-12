@@ -14,7 +14,6 @@ const Home = ({fetchTrends, history, places}) => {
   }
 
 
-
   return (
     <div>
       <Map

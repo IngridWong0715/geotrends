@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.2'
+ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -48,6 +48,8 @@ gem 'omniauth-twitter', '~> 1.4'
 
 #ensure react front end is served correctly when built and deployed.
 gem 'rails_serve_static_assets'
+
+gem 'sass-rails' 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

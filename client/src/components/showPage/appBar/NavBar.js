@@ -8,7 +8,7 @@ import LongMenu from './Menu'
 
 const NavBar = ({history, resetQuery}) => {
   const handleButtonClick = () => {
-    history.push('/');
+    history.push('/home');
     resetQuery();
   }
   return (
