@@ -36,7 +36,6 @@ module GlobalTrendingTweetsApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    #For Heroku deployment
-    config.serve_static_assets = true
+
   end
 end
