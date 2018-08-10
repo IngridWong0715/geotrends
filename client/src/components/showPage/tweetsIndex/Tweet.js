@@ -59,7 +59,6 @@ class Tweet extends React.Component {
     .then(res => res.json())
     .then(retweetStatus => {
         this.setState({retweeted: true})
-        debugger; //doesn't seem like the Twitter gem retweet method is working
     })
   }
   handleFavorite(){
@@ -67,7 +66,6 @@ class Tweet extends React.Component {
     .then(res => res.json())
     .then(favoriteStatus => {
         this.setState({liked: true})
-        debugger; //doesn't seem like the Twitter gem favorite method is working
     })
 
   }
